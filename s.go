@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"syscall"
 )
 
 //Awstoken struct to hold content of system generated json file in ~/.aws/cli/cashe/<filename.json>
@@ -58,4 +59,6 @@ func main() {
 
 	fmt.Fprintf(os.Stdout, " values are set \n AccessKeyId %s\n SecretAccessKey %s\n SessionToken %s\n", os.Getenv("AWS_ACCESS_KEY_ID"), os.Getenv("AWS_SECRET_ACCESS_KEY"), os.Getenv("AWS_SESSION_TOKEN"))
 
+	//replace go shell with new shell with env values - note go run exists
+	syscall.Exec(os.Getenv("SHELL"), []string{os.Getenv("SHELL")}, syscall.Environ())
 }
