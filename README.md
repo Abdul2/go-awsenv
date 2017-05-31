@@ -10,4 +10,9 @@
 
 ### how
 
+	run aws cli call with MFA to get a session (in ~/.aws/cli/cache)
 	clone and run 
+	go to http://localhost:8081
+	check your profile file 
+	
+
